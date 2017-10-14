@@ -7,65 +7,161 @@
 
 <style>
 * {
-    margin: 0;
+    margin: 0px;
+	padding: 0px;
+	border: 0px;
+	outline: 0px;
 }
 
 body {
-	background: #505080;
+	background: #3399ff;
+	}
+	
+.header {
+	background: #3399ff;
+	border-bottom: 2px solid #0000cc;
+	}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}	
+	
+.sigla {
+	float:left;
+	width: 120px;
+	height: 120px;
+	}
+	
+.header h1 {
+	text-align: center;
+	padding-top: 10px;
+	}
+	
+.header h2 {
+	text-align: center;
+	}
+	
+	
+.main {
+	}
+	
+	
+.meniu_stanga {
+	float: left;
+	background: #6699ff;
+	width: 120px;
+	height: 300px;
+	padding: 50px;
+	border-right: 2px solid #0000cc;
+	
+	}
+	
+.meniu_stanga ul {
+	list-style-type:none;
+	}
+	
+.meniu_stanga ul li {
+	margin: 20px;
+	font-size: 1.5em;
+	}
+	
+.meniu_stanga ul li a {
+	  display: inline-block;
+}	  
+	 
+.meniu_stanga ul li a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	display: block;
+	}
+	
+.meniu_stanga ul li a:hover {
+    color: hotpink;
 }
 
-.header {
-	background: #8080ff;
-	text-align: center;
-	padding: 50px;
-}
 
 .meniu_sus {
-	background: #8080ff;
-	border-top: 2px solid #0000cc;
-}
-
-.meniu_stanga {
-	background: #8080ff;
-	width: 200px;
-	height: 400px;
-	padding: 50px;
-	border-right: 3px solid #0000cc;
-	border-top: 2px solid #0000cc;
+	background: #3377ff;
 	border-bottom: 2px solid #0000cc;
+	overflow: hidden;
+	}
+	
+.meniu_sus a:link , a:visited {
+    color: rgb(0, 0, 204);
+    text-decoration: none;
+	padding: 2px 50px;
+	height: 20px;
+	width: 100px;
 }
+	
+.meniu_sus a:hover {
+    color: hotpink;
+} 
 
-.footer {
-    background: #8080ff;
-    padding: 10px;
-    text-align: center;
-}
+
+.content {
+	background: #80aaff;
+	height: 550px;
+	padding: 20px 30px 20px 300px;
+	}
+	
+.footer1 {
+	background: #3377ff;
+	border-top: 2px solid #0000cc;
+	height: 25px;
+	padding: 2px 5px;
+	}
+	
+.footer1 p {
+	text-align: right;
+	}
+	
+.footer2 {
+	background: #ffffff;
+	height: 29px;
+	}
+	
 </style>
-
 
 </head>
 
 <body>
 
-<div class="header">
+<div class="header clearfix">
+	<img class="sigla" src="Paladin_Logo.jpg" alt="Emblema">
 	<h1> CaTelNet </h1>
-	<h2> Cablu , Telefon , Internet </h2>
+	<h2> Cablu , Telefon , Internet </h2>		
 </div>
 
-<div class="meniu_sus">
-Meniu sus
+<div class="main">
+	<div class="meniu_stanga">
+		<ul>
+			<li> <a href="Acasa.html"> Acasa </a> </li>
+			<li> <a href="Servicii.html"> Servicii </a> </li>
+			<li> <a href="Oferte.html"> Oferte </a> </li>
+			<li> <a href="Suport.html"> Suport </a> </li>
+			<li> <a href="Contact.html"> Contact </a> </li>
+		</ul>
+	</div>
+	<div class="meniu_sus">
+		<a href="Cablu.html"> Cablu </a>
+		<a href="Telefon.html"> Telefon </a>
+		<a href="Internet.html"> Internet </a>
+	</div>
+	<div class="content">
+		<p> asfsdfsdf</p>
+	</div>
 </div>
 
-<div class="meniu_stanga">
-<ul>
-	<li> <a href="abc.txt"> Acasa </a> </li>
-	<li> <a href="abc2.txt"> Contact </a> </li>
-</ul>
+<div class="footer1">
+	<p> 2017 (c) Copyright s.c. CaTelNet s.r.l. Toate drepturile rezervate </p>
 </div>
 
-<div class="footer">
-Footer
+<div class="footer2">
 </div>
+
 
 </body>
 
