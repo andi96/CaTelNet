@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+ 
+<title> CaTelNet </title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- CSS pentru continutul ( id="content" ) paginii -->
+<style>	
+.lista_pentru_fiecare_seviciu {
+	list-style-type:none;
+	}
+	
+.lista_pentru_fiecare_seviciu li {
+	margin-top: 10px;
+	margin-left: 30px;
+	}
+		
+.lista_interioara li {
+	margin-top: 0px;
+	margin-left: 40px;
+	}
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script.js"></script>
+
+</head>
+
+
+<body>
+
+<div id="header" class="clearfix">
+	<img id="sigla" src="poze/Paladin_Logo.jpg" alt="Emblema" onmouseover="SiglaonHover();" onmouseout="SiglaoffHover();">
+	<h1> CaTelNet </h1>
+	<h2> Cablu , Telefon , Internet </h2>		
+</div>
+<div id="main">
+	<div id="meniu_stanga">
+		<ul>
+			<li> <a href="Acasa.html"> Acasa </a> </li>
+			<li> <a href="Servicii.html"> Servicii </a> </li>
+			<li> <a href="Produse.html"> Produse </a> </li>
+			<li> <a href="Suport.html"> Suport </a> </li>
+			<li> <a href="Contact.html"> Contact </a> </li>
+		</ul>
+	</div>
+	<div id="meniu_sus">
+		<a href="Baza_date_Cablu.html"> Cablu </a>
+		<a href="Baza_date_Telefon.html"> Telefon </a>
+		<a href="Baza_date_Internet.html"> Internet </a>
+	</div>
+	
+	
+	<!-- Continut ////////////////////////// -->
+	
+	<div id="content">	
+		<h3> Serviciile noastre : </h3> <br>
+		<ul>
+			<li> 
+				<p style="font-size: 1.3em; font-weight:bold;"> Cablu </p>
+				<ul class="lista_pentru_fiecare_seviciu">
+					<li> <p style="font-weight:600;"> Grila TV : </p>
+						<ol class="lista_interioara">
+							<li> tvr1 </li>
+							<li> tvr2 </li>
+							<li> pro tv </li>
+							<li> antena 1 </li>
+							<li> prima </li>
+							<li> canal d </li>
+							<li> catoon network </li>
+							<li> disney channel </li>
+							<li> pro x </li>
+							<li> eurosport </li>
+							<li> eurosport 2 </li>
+							<li> kiss tv </li>
+							<li> u tv </li>
+							<li> muzic channel </li>
+							<li> hit </li>
+							<li> mezzo </li>
+							<li> history tv </li>
+							<li> dicovery </li>
+							<li> animal planet </li>
+							<li> tv paprika </li>
+						</ol>
+					</li>
+					
+					<li> <p style="font-weight:600;"> Pachete TV : </p>
+						<ol class="lista_interioara">
+							<li> TV play : pachetul standard cu 20 de programe </li>
+							<li> TV max play : pachetul cu decodor </li>
+						</ol>
+					</li>
+
+					<li> <a href="Baza_date_Cablu.html"> Abonati Cablu </a> </li>
+				</ul>
+				<br> <br>
+			</li>
+			
+			<li> 
+				<p style=" font-size: 1.3em; font-weight:bold;"> Telefon </p>
+				<ul class="lista_pentru_fiecare_seviciu">
+					<li> <p style="font-weight:600;"> Abonamente : </p>
+						<ol class="lista_interioara">
+							<li> tip 1 cu 100 min nationale </li>
+							<li> tip 2 cu 500 min nationale</li>
+						</ol>
+					</li>
+					
+					<li> <p style="font-weight:600;"> Tarife : </p>
+						<ol class="lista_interioara">
+							<li> 1 euro </li>
+							<li> 3 euro </li>
+						</ol>
+					</li>
+
+					<li> <a href="Baza_date_Telefon.html"> Abonati Telefon </a> </li>
+				</ul>
+				<br> <br>
+			</li>
+			
+			<li> 
+				<p style=" font-size: 1.3em; font-weight:bold;"> Internet </p>
+				<ul class="lista_pentru_fiecare_seviciu">
+					<li> <p> <span style="font-weight:600;"> fiberNET 100 </span> : Abonament de 100 Mb/s la doar 5 euro . </p>
+					</li>
+					
+					<li> <p> <span style="font-weight:600;"> fiberNET 300 </span> : Abonament de 300 Mb/s la doar 7 euro . </p>
+					</li>
+
+					<li> <a href="Baza_date_Internet.html"> Abonati Internet </a> </li>
+				</ul>
+				<br> <br>
+			</li>
+			
+			<li> <a href="Produse.html"> De asemenea se pot achizitiona o gama larga de produse </a> </li>
+		</ul>
+	</div>
+	
+	<!-- End Continut ////////////////////////// -->
+	
+	
+</div>
+
+<div id="footer1">
+	<p> 2017 (c) Copyright s.c. CaTelNet s.r.l. Toate drepturile rezervate </p>
+</div>
+
+<div id="footer2">
+</div>
+
+</body>
+
+
+</html>

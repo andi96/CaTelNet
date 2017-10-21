@@ -1,0 +1,130 @@
+* {
+    margin: 0px;
+	padding: 0px;
+	border: 0px;
+	outline: 0px;
+	}
+
+body {
+	background: #ffffff;
+	}
+	
+#header {
+	background: #3399ff;
+	border-bottom: 2px solid #0000cc;
+	}
+	
+/* Pentru ca chestiile cu float sa nu iasa afara din div-ul parinte .
+   Punem un element gol , care nu mai are float , la sfarsitul div-ul parinte (dupa chestiile cu float ) .
+*/
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}	
+	
+#sigla {
+	float:left;
+	width: 120px;
+	height: 120px;
+	}
+	
+#header h1 {
+	text-align: center;
+	padding-top: 20px;
+	}
+	
+#header h2 {
+	text-align: center;
+	}
+	
+	
+#main {
+	background: #80aaff;
+	}
+	
+	
+#meniu_stanga {
+	float: left;
+	background: #6699ff;
+	width: 120px;
+	height: 300px;
+	padding: 50px;
+	border-right: 2px solid #0000cc;
+	
+	}
+	
+#meniu_stanga ul {
+	list-style-type:none;
+	}
+	
+#meniu_stanga ul li {
+	margin: 20px;
+	font-size: 1.5em;
+	}
+	
+#meniu_stanga ul li a {
+	  display: inline-block;
+}	  
+	 
+#meniu_stanga ul li a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	display: block;
+	}
+	
+#meniu_stanga ul li a:hover {
+    color: hotpink;
+}
+
+
+#meniu_sus {
+	background: #3377ff;
+	border-bottom: 2px solid #0000cc;
+	overflow: hidden;
+	}
+	
+#meniu_sus a:link , a:visited {
+    color: rgb(0, 0, 204);
+    text-decoration: none;
+	padding: 2px 50px;
+	height: 20px;
+	width: 100px;
+}
+	
+#meniu_sus a:hover {
+    color: hotpink;
+} 
+
+
+#content {
+	background: #80aaff;
+	min-height: 500px;
+	padding: 20px 30px 20px 300px;
+	}
+	
+#content a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	}
+	
+#content a:hover {
+    color: hotpink;
+}
+	
+#footer1 {
+	clear: left;
+	background: #3377ff;
+	border-top: 2px solid #0000cc;
+	height: 25px;
+	padding: 2px 5px;
+	}
+	
+#footer1 p {
+	text-align: right;
+	}
+	
+#footer2 {
+	background: #ffffff;
+	height: 29px;
+	}
