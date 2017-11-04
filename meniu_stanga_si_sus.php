@@ -1,6 +1,4 @@
-<?php
-
-echo '<div id="meniu_stanga">
+<div id="meniu_stanga">
 		<ul>
 			<li> <a href="Acasa.php"> Acasa </a> </li>
 			<li> <a href="Servicii.php"> Servicii </a> </li>
@@ -13,6 +11,4 @@ echo '<div id="meniu_stanga">
 		<a href="Baza_date_Cablu.php"> Cablu </a>
 		<a href="Baza_date_Telefon.php"> Telefon </a>
 		<a href="Baza_date_Internet.php"> Internet </a>
-	</div>';
-	
-?>
+	</div>

@@ -1,3 +1,8 @@
+<?php
+	// Initialize the session
+	session_start(); 
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -90,7 +95,7 @@
 						</ol>
 					</li>
 
-					<li> <a href="Baza_date_Cablu.html"> Abonati Cablu </a> </li>
+					<li> <a href="Baza_date_Cablu.php"> Abonati Cablu </a> </li>
 				</ul>
 				<br> <br>
 			</li>
@@ -112,7 +117,7 @@
 						</ol>
 					</li>
 
-					<li> <a href="Baza_date_Telefon.html"> Abonati Telefon </a> </li>
+					<li> <a href="Baza_date_Telefon.php"> Abonati Telefon </a> </li>
 				</ul>
 				<br> <br>
 			</li>
@@ -126,7 +131,7 @@
 					<li> <p> <span style="font-weight:600;"> fiberNET 300 </span> : Abonament de 300 Mb/s la doar 7 euro . </p>
 					</li>
 
-					<li> <a href="Baza_date_Internet.html"> Abonati Internet </a> </li>
+					<li> <a href="Baza_date_Internet.php"> Abonati Internet </a> </li>
 				</ul>
 				<br> <br>
 			</li>

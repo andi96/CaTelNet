@@ -29,9 +29,32 @@ body {
 	height: 120px;
 	}
 	
+.p_login {
+	text-align: right;
+	margin-right: 10px;
+	padding-top: 5px;
+	font-size: 1.2em;
+	}
+	
+.p_login a {
+	padding: 3px;
+	border: 3px solid #0000cc;
+	margin-right: 10px;
+	margin-left: 10px;
+	}
+
+.p_login a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	}
+	
+.p_login a:hover {
+    color: hotpink;
+	}
+
 #header h1 {
 	text-align: center;
-	padding-top: 20px;
+	padding-top: 0px;
 	}
 	
 #header h2 {
@@ -75,7 +98,7 @@ body {
 	
 #meniu_stanga ul li a:hover {
     color: hotpink;
-}
+	}
 
 
 #meniu_sus {
@@ -111,6 +134,26 @@ body {
 #content a:hover {
     color: hotpink;
 }
+
+.p_link_color {
+	
+	}
+	
+.p_link_color a {
+	padding: 3px;
+	border: 3px solid #0000cc;
+	margin-right: 10px;
+	margin-left: 10px;
+	}
+
+.p_link_color a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	}
+	
+.p_link_color a:hover {
+    color: hotpink;
+	}
 	
 #footer1 {
 	clear: left;
