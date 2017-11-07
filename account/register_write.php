@@ -2,8 +2,8 @@
 	require_once 'config.php';
 
 	// Define variables and initialize with empty values
-	$username = $password = $confirm_password = "";
-	$username_err = $password_err = $confirm_password_err = "";
+	$username = $password = $confirm_password = $cod_write_access = $pass_cod_write_access = "";
+	$username_err = $password_err = $confirm_password_err = $cod_write_access_err = $pass_cod_write_access_err = "";
 
 	// Processing form data when form is submitted	
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -70,11 +70,71 @@
 			}
 		}
 
+		
+		// Validate cod_write_access and pass_cod_write_access
+		// Verificam codul
+		if(empty(trim($_POST["cod_write_access"]))) {
+			$cod_write_access_err = 'Introduceti codul .';
+		} else	
+		{	
+				// Prepare a select statement
+				$sql = "SELECT cod , pass_cod FROM cod_write_access WHERE cod = ?";
+				
+				if($stmt = $conn->prepare($sql)) {
+
+					// Bind variables to the prepared statement as parameters
+					$stmt->bind_param("s", $param_cod);
+
+					// Set parameters
+					$param_cod = trim($_POST["cod_write_access"]);
+
+					// Attempt to execute the prepared statement
+					if($stmt->execute())
+					{
+
+						// store result
+						$stmt->store_result();
+
+						if($stmt->num_rows < 1) {
+							$cod_write_access_err = 'Cod inexistent .';
+						} else 
+						{
+							if(empty(trim($_POST["pass_cod_write_access"])))
+								$pass_cod_write_access_err = 'Introduceti parola codului .';
+							else
+							{
+								// Verificam parola codului
+								$pass_cod_write_access = trim($_POST["pass_cod_write_access"]);
+
+								$stmt->bind_result($cod_write_access, $hashed_pass_cod_write_access);
+		
+								if($stmt->fetch()) {
+									
+									if(!(password_verify($pass_cod_write_access, $hashed_pass_cod_write_access))) {
+
+									// Daca parola codului nu e corecta setam pe $pass_cod_write_access_err
+									$pass_cod_write_access_err = "Parola cod invalida .";
+									
+									}
+								}
+							}
+						}
+
+					} else {
+						echo 'Ops! A aparut o problema . Incercati mai tarziu .';  //'Oops! Something went wrong. Please try again later .';
+					}
+					
+					// Close statement
+					$stmt->close();
+				}	
+		}
+		
+
 		// Check input errors before inserting in database
-		if(empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
+		if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($cod_write_access_err)&& empty($pass_cod_write_access_err)) {
     
 			// Prepare an insert statement
-			$sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+			$sql = "INSERT INTO users (username, password , account_type) VALUES (? , ? ,'read/write')";
 
 			if($stmt = $conn->prepare($sql)) {
 				
@@ -113,7 +173,7 @@
 
 <head>
     <meta charset="UTF-8">
-	<title> Register </title>
+	<title> Register wtrite access </title>
 	
 	<!-- CSS pentru register.php -->
 	<style>
@@ -150,7 +210,7 @@
 <div id="div_register">
 
 	<h2 id="h2_sing_up">Sign Up</h2> 
-	<a href="register_write.php"> Sign up with Write access </a></p>
+	<a href="register.php"> Sign up with just Read access </a></p>
 	
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
 		<p>
@@ -169,6 +229,16 @@
 			<?php echo $confirm_password_err; ?>
 		</p>
 		<p>
+			<label> Cod write access : </label>
+			<input type="text" name="cod_write_access"> <br>
+			<?php echo $cod_write_access_err; ?>
+		</p>
+		<p>
+			<label> Password cod write access : </label>
+			<input type="password" name="pass_cod_write_access"> <br>
+			<?php echo $pass_cod_write_access_err; ?>
+		</p>		
+		<p>
 			<input type="submit" value="Sign up">
 			<input type="reset" value="Reset">
 		</p>
@@ -180,6 +250,3 @@
 </body>
 
 <html>
-
-
-

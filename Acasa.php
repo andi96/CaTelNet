@@ -3,6 +3,15 @@
 	session_start(); 
 ?>
 
+<!--	
+	Folosesc prepared statements pentru protectie si pentru ca e mai rapid .
+	Nu folosesc mysqli_real_escape_string peste tot pentru ca daca un input nu e corect ,
+nu vreau sa se continue cu el escape-uit , ci vreau sa nu fie acceptat deloc .
+	De accea , la fiecare input se poate face o verificare contextuala ,
+de exemplu , cand utilizatorul isi creaza un cont si introduce username-ul , acesta trebuie sa fie de forma : ^[a-zA-Z0-9_]*$ ,
+adica contine doar litere nici , mari , cifre si '_' .
+ -->
+
 <!DOCTYPE html>
 <html>
 

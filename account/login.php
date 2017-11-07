@@ -25,7 +25,7 @@
     if(empty($username_err) && empty($password_err)){
 		
         // Prepare a select statement
-        $sql = "SELECT Username , Password FROM users WHERE Username = ?";
+        $sql = "SELECT username , password , account_type FROM users WHERE Username = ?";
 		
         if($stmt = $conn->prepare($sql)) {
 			
@@ -39,20 +39,22 @@
             if($stmt->execute()) {
 
                 // Store result
+                // Store result
                 $stmt->store_result();
 
                 // Check if username exists, if yes then verify password
                 if($stmt->num_rows == 1){                    
 
-                    // Punem din stmt Username-ul (prima coloana din stmt) in $username si Password-ul (a doua coloana din stmt) in $hashed_password
-                    $stmt->bind_result($username, $hashed_password);
+                    // Punem din stmt Username-ul (prima coloana din stmt) in $username , Password-ul (a doua coloana din stmt) in $hashed_password si la fel pt account_type
+                    $stmt->bind_result($username, $hashed_password , $account_type);
 
                     if($stmt->fetch()) {
                         if(password_verify($password, $hashed_password)) {
 
                             // Password is correct, so start a new session and save the username to the session 
-                            session_start();
-                            $_SESSION['username'] = $username;      
+                            session_start();							
+                            $_SESSION['username'] = $username; 
+							$_SESSION['account_type'] = $account_type;							
                             header("location: ../Acasa.php");
                         } else {
 
@@ -67,18 +69,21 @@
                     // Display an error message if username doesn't exist
                     $username_err = 'User inexistent .';  //'Invalid username .';
                 }	
+				
+				// Close statement
+				$stmt->close();
+				
             } else {
                 echo 'Ops! A aparut o problema . Incercati mai tarziu .';  //'Oops! Something went wrong. Please try again later .';
             }
 			
-		// Close statement
-        $stmt->close();
         }
     }
 
+	}
     // Close connection
     $conn->close();
-	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +91,7 @@
 
 <head>
     <meta charset="UTF-8">
-	<title> Login </title>
+	<title> Log in </title>
 	
 	<!-- CSS pentru login.php -->
 	<style>

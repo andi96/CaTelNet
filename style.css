@@ -8,7 +8,8 @@
 body {
 	background: #ffffff;
 	}
-	
+
+/* Header-ul paginii */
 #header {
 	background: #3399ff;
 	border-bottom: 2px solid #0000cc;
@@ -28,7 +29,8 @@ body {
 	width: 120px;
 	height: 120px;
 	}
-	
+
+/* <p> cu Log in , Sign up , Salut user , Sign out */	
 .p_login {
 	text-align: right;
 	margin-right: 10px;
@@ -52,6 +54,7 @@ body {
     color: hotpink;
 	}
 
+/* Titlurile din header */
 #header h1 {
 	text-align: center;
 	padding-top: 0px;
@@ -61,12 +64,12 @@ body {
 	text-align: center;
 	}
 	
-	
+/* div-ul cu meniuri si continut */
 #main {
 	background: #80aaff;
 	}
 	
-	
+/* div-ul cu meniu_stanga */
 #meniu_stanga {
 	float: left;
 	background: #6699ff;
@@ -100,7 +103,7 @@ body {
     color: hotpink;
 	}
 
-
+/* div-ul cu meniu_sus */
 #meniu_sus {
 	background: #3377ff;
 	border-bottom: 2px solid #0000cc;
@@ -119,7 +122,7 @@ body {
     color: hotpink;
 } 
 
-
+/* div-ul cu continutul paginii */
 #content {
 	background: #80aaff;
 	min-height: 500px;
@@ -135,10 +138,10 @@ body {
     color: hotpink;
 }
 
-.p_link_color {
-	
-	}
-	
+
+/*	<p> - urile cu class='p_link_color' au likurile ( <a> ) de forma de mai jos . 
+	Majoritatea <a> - urilor din <p> - uri sunt de forma aceasta .
+*/
 .p_link_color a {
 	padding: 3px;
 	border: 3px solid #0000cc;
@@ -155,6 +158,18 @@ body {
     color: hotpink;
 	}
 	
+/* Div-urile cu form-uri pt modificat BD . */
+.div_pt_modificat_bd {
+	float: left;
+	width: 500px;
+	height: 200px;
+	border: 2px solid #0000cc;
+	margin: 10px;
+	text-align: center;
+	border-radius: 5px;
+	}
+	
+/* Footerele paginii */
 #footer1 {
 	clear: left;
 	background: #3377ff;

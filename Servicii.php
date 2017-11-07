@@ -10,7 +10,7 @@
 
 <meta charset="UTF-8">
  
-<title> CaTelNet </title>
+<title> CaTelNet Servicii </title>
 
 <!-- CSS si Javascript extern comun tuturor paginilor ////////////////////////////////////// -->
 <?php include 'external_css_javascript.php' ?>
@@ -136,7 +136,7 @@
 				<br> <br>
 			</li>
 			
-			<li> <a href="Produse.html"> De asemenea se pot achizitiona o gama larga de produse </a> </li>
+			<li> <a href="Produse.php"> De asemenea se pot achizitiona o gama larga de produse </a> </li>
 		</ul>
 	</div>
 	

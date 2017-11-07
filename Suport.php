@@ -10,7 +10,7 @@
 
 <meta charset="UTF-8">
  
-<title> CaTelNet </title>
+<title> CaTelNet Suport </title>
 
 <!-- CSS si Javascript extern comun tuturor paginilor ////////////////////////////////////// -->
 <?php include 'external_css_javascript.php' ?>
