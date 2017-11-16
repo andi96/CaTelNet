@@ -57,8 +57,8 @@
 		echo htmlspecialchars($_SERVER["PHP_SELF"]);
 				
 		echo	' " method="POST">
-				Nume: <input type="text" name="nume"><br>
-				Prenume: <input type="text" name="prenume"><br>
+				Nume : <input type="text" name="nume"><br>
+				Prenume : <input type="text" name="prenume"><br>
 				<input type="submit" value="Cauta">
 				</form>';
 				
@@ -191,7 +191,7 @@
 				if(!empty(trim($_POST["prenume"])))
 					$mesaj = cauta("p");  // Doar prenume
 				else
-					$mesaj = '<p class="p_link_color"> Introduceti numele si prenumele .  </p>';	
+					$mesaj = '<p class="p_link_color"> Introduceti numele si/sau prenumele .  </p>';	
 		}	
 		$conn->close();
 		

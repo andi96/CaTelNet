@@ -3,6 +3,7 @@
 	session_start(); 
 	
 	require_once 'account/config.php';	
+	include 'functii_modificare_BD.php';
 ?>
 
 <!DOCTYPE html>
@@ -43,116 +44,61 @@
 <?php	
 	if(isset($_SESSION['username']) && (!empty($_SESSION['username'])) && ($_SESSION['account_type'] == "read/write")) {
 	
-		$mesaj_ad_abonat = $mesaj_ad_abonament = "";
-		$nume = $prenume = $adresa = $id_abonat = $pachet = "";
+		$mesaj_ad_abonat = $mesaj_ad_abonament = $mesaj_st_abonat = $mesaj_st_abonament = "";
 			
 		if($_SERVER["REQUEST_METHOD"] == "POST") {
 				
-			// Div cu adaugare abonat nou (div 1)
+			// START PHP Div cu adaugare abonat nou (div 1)
 			if(isset($_POST["submit_ad_abonat"]))
-				if((empty(trim($_POST["nume_ad"]))) || (empty(trim($_POST["prenume_ad"]))) || (empty(trim($_POST["adresa_ad"])))) {
+				if((empty(trim($_POST["nume_ad"]))) || (empty(trim($_POST["prenume_ad"]))) || (empty(trim($_POST["adresa_ad"]))))
 					$mesaj_ad_abonat = "Introduceti toate datele .";
-				}
-				else {
-			
-					$nume = trim($_POST["nume_ad"]);
-					$prenume = trim($_POST["prenume_ad"]);
-					$adresa = trim($_POST["adresa_ad"]);
-							
-					$sql1 = "INSERT INTO Abonati (nume , prenume , adresa) VALUES (? , ? , ? )";
-							
-					if($stmt = $conn->prepare($sql1)) {
-					
-						$stmt->bind_param("sss", $param_nume , $param_prenume , $param_adresa);
+				else
+					$mesaj_ad_abonat = adauga_abonat();
 
-						$param_nume = $nume;
-						$param_prenume = $prenume;
-						$param_adresa = $adresa;
-							
-						if($stmt->execute())
-							$mesaj_ad_abonat = "Abonat adaugat .";
-						else
-							$mesaj_ad_abonat = 'Ops! A aparut o problema . Incercati mai tarziu .';  //'Oops! Something went wrong. Please try again later .';
-						
-						$stmt->close();
-						}
-						else {
-							$mesaj_ad_abonat = 'Ops! A aparut o problema . Incercati mai tarziu .';  //'Oops! Something went wrong. Please try again later .';
-						}
-				}
-				
-			// Div cu adaugare abonament la cablu nou (div 2)
+			// END PHP div 1
+			////////////////////////////////////////
+			
+			
+			// START PHP Div cu adaugare abonament la cablu nou (div 2)
 			if(isset($_POST["submit_ad_abonament"]))
-				if((empty(trim($_POST["id_abonat_ad"]))) || (!isset($_POST["pachet_ad"]))) {
+				if((empty(trim($_POST["id_abonat_ad"]))) || (!isset($_POST["pachet_ad"])))
 					$mesaj_ad_abonament = "Introduceti toate datele .";
-				}
-				else {
-					
-					$id_abonat = trim($_POST["id_abonat_ad"]);
-					$pachet = trim($_POST["pachet_ad"]);
-					
-					// Verificam daca exista abonatul .
-					$sql21 = "SELECT id_abonat FROM Abonati WHERE id_abonat = ?";
-					
-					if($stmt = $conn->prepare($sql21)) {
-						
-						$stmt->bind_param("d", $param_id_abonat);
-						
-						$param_id_abonat = $id_abonat;
-						
-						if($stmt->execute()) {
-							
-							$stmt->store_result();
-							
-							if($stmt->num_rows == 0)
-								$mesaj_ad_abonament = "Nu exista abonat cu acest id .";
-							else {
-								
-								// Adaugam abonamentul .
-								$sql22 = "INSERT INTO Cablu (id_abonat , pachet) VALUES (? , ? )";							
-							
-								if($stmt2 = $conn->prepare($sql22)) {
-									
-									$stmt2->bind_param("ds", $param_id_abonat , $param_pachet);
-							
-									$param_id_abonat = $id_abonat;
-									$param_pachet = $pachet;
-									
-									if($stmt2->execute())
-										$mesaj_ad_abonament = "Abonament adaugat .";
-									else
-										$mesaj_ad_abonament = 'Ops! A aparut o problema . Incercati mai tarziu .';  //'Oops! Something went wrong. Please try again later .';
-					
-									$stmt2->close(); 
-								}
-								else 
-									$mesaj_ad_abonament = 'Ops! A aparut o problema . Incercati mai tarziu .';  //'Oops! Something went wrong. Please try again later .';
-					
-							}
-							
-						} 
-						else
-							$mesaj_ad_abonament = 'Ops! A aparut o problema . Incercati mai tarziu .';  //'Oops! Something went wrong. Please try again later .';
-
-						$stmt->close();
-					}
-					else 
-						$mesaj_ad_abonament = 'Ops! A aparut o problema . Incercati mai tarziu .';  //'Oops! Something went wrong. Please try again later .';
-				}
+				else 
+					$mesaj_ad_abonament = adauga_abonament();
 				
+			// END PHP div 2
+			////////////////////////////////////////	
 		
-			// Div cu ... (div 3)
+		
+			// START PHP Div cu stergerea unui abonat dupa ID_abonat (div 3)
+			if(isset($_POST["submit_st_abonat"]))
+				if(empty(trim($_POST["id_abonat_st"])))
+					$mesaj_st_abonat = "Introduceti toate datele .";
+			else 	
+				$mesaj_st_abonat = strege_abonat();
+
+			// END PHP div 3
+			////////////////////////////////////////
 			
-			/////////////////////
+			// START PHP Div cu stergerea unui abonament dupa ID_abonanament (div 4)
+			if(isset($_POST["submit_st_abonament"]))
+				if(empty(trim($_POST["id_abonament_st"])))
+					$mesaj_st_abonament = "Introduceti toate datele .";
+			else 	
+				$mesaj_st_abonament = strege_abonament();
+
+			// END PHP div 4
+			////////////////////////////////////////
 			
 		}
 		$conn->close();
 		
 		
+		////////////////////////////////////////////////////////////////////////
 		// Form-urile
 		echo '<p style="padding-left: 15px;"> <a href="Baza_date_Cablu.php"> Inapoi la Cauta </a> </p>';
 	
-		// Div cu adaugare abonat nou (div 1)
+		// START Div cu adaugare abonat nou (div 1)
 		echo '<div class="div_pt_modificat_bd">';
 		echo '<p> Adauga un abonat nou </p> <br>';
 		
@@ -161,15 +107,18 @@
 		echo htmlspecialchars($_SERVER["PHP_SELF"]);
 				
 		echo	' " method="POST">
-				Nume: <input type="text" name="nume_ad"><br>
-				Prenume: <input type="text" name="prenume_ad"><br>
-				Adresa: <input type="text" name="adresa_ad"><br><br> 
+				Nume : <input type="text" name="nume_ad"><br>
+				Prenume : <input type="text" name="prenume_ad"><br>
+				Adresa : <input type="text" name="adresa_ad"><br><br> 
 				<input type="submit" name="submit_ad_abonat" value="Adauga">
 				</form> <br>';
 				
 		echo $mesaj_ad_abonat;
 				
 		echo '</div>';
+		// END div 1
+		//////////////////////////////////////////////////////
+		
 		
 	///////////////////////////////////////////////////////////////////////////////////////////////////	
 	// Put MySQL ENUM values into drop down select box , cu numele $column_name + $extensie_name_select
@@ -206,11 +155,10 @@
 		
 		return $selectDropdown;
 	}
-
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
-		// Div cu adaugare abonament la cablu nou (div 2)
+		// START Div cu adaugare abonament la cablu nou (div 2)
 		echo '<div class="div_pt_modificat_bd">';
 		echo '<p> Adauga un abonament de cablu nou </p> <br>';
 		
@@ -219,8 +167,8 @@
 		echo htmlspecialchars($_SERVER["PHP_SELF"]);
 				
 		echo	' " method="POST">
-				ID_abonat: <input type="text" name="id_abonat_ad"><br>
-				Pachet:';
+				ID_abonat : <input type="text" name="id_abonat_ad"><br>
+				Pachet :';
 						echo enumDropdown("cablu" , "pachet" , "_ad");
 				
 		echo 	'<br> <br> <br>';		
@@ -231,10 +179,55 @@
 				
 		echo '</div>';
 		
+		// END div 2 
+		//////////////////////////////////////////////////////
 		
-		// Div cu ... (div 3)
 		
-		/////////////////////
+		// START Div cu stergerea unui abonat dupa ID_abonat (div 3)
+		echo '<div class="div_pt_modificat_bd">';
+		echo '<p> Sterge un abanat dupa ID_abonat </p> <br>';
+		
+		echo '<form action="';
+				
+		echo htmlspecialchars($_SERVER["PHP_SELF"]);
+				
+		echo	' " method="POST">
+				ID_abonat : <input type="text" name="id_abonat_st"><br>';
+				
+		echo 	'<br> <br> <br>';		
+		echo	'<input type="submit" name="submit_st_abonat" value="Sterge">
+				</form> <br>';
+				
+		echo $mesaj_st_abonat;
+				
+		echo '</div>';
+				
+		// END div 3 
+		//////////////////////////////////////////////////////
+		
+		
+		// START Div cu stergerea unui abonament dupa ID_abonament (div 4)
+		echo '<div class="div_pt_modificat_bd">';
+		echo '<p> Sterge un abanament de cablu dupa ID_abonament </p> <br>';
+		
+		echo '<form action="';
+				
+		echo htmlspecialchars($_SERVER["PHP_SELF"]);
+				
+		echo	' " method="POST">
+				ID_cablu : <input type="text" name="id_abonament_st"><br>';
+				
+		echo 	'<br> <br> <br>';		
+		echo	'<input type="submit" name="submit_st_abonament" value="Sterge">
+				</form> <br>';
+				
+		echo $mesaj_st_abonament;
+				
+		echo '</div>';
+				
+		// END div 4 
+		//////////////////////////////////////////////////////
+		
 		
 	}
 	else
