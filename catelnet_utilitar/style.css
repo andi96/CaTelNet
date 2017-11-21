@@ -1,0 +1,188 @@
+* {
+    margin: 0px;
+	padding: 0px;
+	border: 0px;
+	outline: 0px;
+	}
+
+body {
+	background: #ffffff;
+	}
+
+/* Header-ul paginii */
+#header {
+	background: #3399ff;
+	border-bottom: 2px solid #0000cc;
+	}
+	
+/* Pentru ca chestiile cu float sa nu iasa afara din div-ul parinte .
+   Punem un element gol , care nu mai are float , la sfarsitul div-ul parinte (dupa chestiile cu float ) .
+*/
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}	
+	
+#sigla {
+	float:left;
+	width: 120px;
+	height: 120px;
+	}
+
+/* <p> cu Log in , Sign up , Salut user , Sign out */	
+.p_login {
+	text-align: right;
+	margin-right: 10px;
+	padding-top: 5px;
+	font-size: 1.2em;
+	}
+	
+.p_login a {
+	padding: 3px;
+	border: 3px solid #0000cc;
+	margin-right: 10px;
+	margin-left: 10px;
+	}
+
+.p_login a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	}
+	
+.p_login a:hover {
+    color: hotpink;
+	}
+
+/* Titlurile din header */
+#header h1 {
+	text-align: center;
+	padding-top: 0px;
+	}
+	
+#header h2 {
+	text-align: center;
+	}
+	
+/* div-ul cu meniuri si continut */
+#main {
+	background: #80aaff;
+	}
+	
+/* div-ul cu meniu_stanga */
+#meniu_stanga {
+	float: left;
+	background: #6699ff;
+	width: 120px;
+	height: 300px;
+	padding: 50px;
+	border-right: 2px solid #0000cc;
+	
+	}
+	
+#meniu_stanga ul {
+	list-style-type:none;
+	}
+	
+#meniu_stanga ul li {
+	margin: 20px;
+	font-size: 1.5em;
+	}
+	
+#meniu_stanga ul li a {
+	  display: inline-block;
+}	  
+	 
+#meniu_stanga ul li a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	display: block;
+	}
+	
+#meniu_stanga ul li a:hover {
+    color: hotpink;
+	}
+
+/* div-ul cu meniu_sus */
+#meniu_sus {
+	background: #3377ff;
+	border-bottom: 2px solid #0000cc;
+	overflow: hidden;
+	}
+	
+#meniu_sus a:link , a:visited {
+    color: rgb(0, 0, 204);
+    text-decoration: none;
+	padding: 2px 50px;
+	height: 20px;
+	width: 100px;
+}
+	
+#meniu_sus a:hover {
+    color: hotpink;
+} 
+
+/* div-ul cu continutul paginii */
+#content {
+	background: #80aaff;
+	min-height: 500px;
+	padding: 20px 30px 20px 300px;
+	}
+	
+#content a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	}
+	
+#content a:hover {
+    color: hotpink;
+}
+
+
+/*	<p> - urile cu class='p_link_color' au likurile ( <a> ) de forma de mai jos . 
+	Majoritatea <a> - urilor din <p> - uri sunt de forma aceasta .
+*/
+.p_link_color a {
+	padding: 3px;
+	border: 3px solid #0000cc;
+	margin-right: 10px;
+	margin-left: 10px;
+	}
+
+.p_link_color a:link , a:visited {
+	color: #0000cc;
+	text-decoration: none;
+	}
+	
+.p_link_color a:hover {
+    color: hotpink;
+	}
+	
+/* Div-urile cu form-uri pt modificat BD . */
+.div_pt_modificat_bd {
+	float: left;
+	width: 500px;
+	height: 200px;
+	border: 2px solid #0000cc;
+	margin: 10px;
+	text-align: center;
+	border-radius: 5px;
+	}
+	
+/* Footerele paginii */
+#footer1 {
+	clear: left;
+	background: #3377ff;
+	border-top: 2px solid #0000cc;
+	height: 25px;
+	padding: 2px 5px;
+	}
+	
+#footer1 p {
+	text-align: right;
+	}
+	
+#footer2 {
+	background: #ffffff;
+	height: 29px;
+	}
